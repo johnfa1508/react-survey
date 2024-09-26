@@ -12,8 +12,8 @@ const answersSet = {
 function ItemsList({ list }) {
   return (
     <ul>
-      {list.map((item) => (
-        <li key={item.id}>{answersSet[item]}</li>
+      {list.map((item, index) => (
+        <li key={index}>{answersSet[item]}</li>
       ))}
     </ul>
   );
@@ -23,10 +23,10 @@ function ItemsList({ list }) {
 export default function AnswersItem({
   // Feel free to change this props names to what suits you best
   // Rememeber here we're destructuring answerItem, which is the prop name that we've passed
-  answerItem: { name, radioButton, checkBox, textBox }
+  answerItem: { id, name, radioButton, checkBox, textBox }
 }) {
   return (
-    <li>
+    <li key={id}>
       <article className="answer">
         <h3>{name || "Anon"} said:</h3>
         <p>
