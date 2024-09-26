@@ -7,6 +7,7 @@ function Survey() {
   // eslint-disable-next-line no-unused-vars
   const [open, setOpen] = useState(false); //Ignore this state
   const [surveyFormData, setSurveyFormData] = useState({
+    id: null,
     radioButton: "",
     checkBox: [],
     textBox: "",
@@ -19,10 +20,12 @@ function Survey() {
     event.preventDefault();
     console.log(surveyFormData)
     console.log("Form Submitted");
-    setAnswersList((prevList) => [...prevList, surveyFormData]);
+    const newAnswer = {...surveyFormData, id: answersList.length + 1}
+    setAnswersList((prevList) => [...prevList, newAnswer]);
     console.log(answersList)
 
     setSurveyFormData({
+      id: null,
       radioButton: "",
       checkBox: [],
       textBox: "",
