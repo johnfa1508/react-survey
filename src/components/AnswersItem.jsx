@@ -41,6 +41,16 @@ export default function AnswersItem({
           <em>What else have you got to say about your rubber duck?</em>
           <span className="answer__line">{textBox}</span>
         </p>
+        {/* 
+          TODO: 
+                IMPLEMENT onClick. 
+                Send ID to Survey.jsx ?
+                Update surveyFormData-state based on id
+                When user submits, check if id already exists in answersList?
+                If it does update that specific answer
+                If not just submit normally
+        */}
+        <button className="form__submit" onClick={() => console.log("clicked")}>EDIT</button>
       </article>
     </li>
   );
