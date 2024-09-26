@@ -17,6 +17,15 @@ function Survey() {
   const [answersList, setAnswersList] = useState([]);
 
   const handleSubmit = (event) => {
+    {/* 
+      TODO: 
+            IMPLEMENT onClick. DONE
+            Send ID to Survey.jsx ? DONE
+            Update surveyFormData-state based on id DONE
+            When user submits, check if id already exists in answersList?
+            If it does update that specific answer
+            If not just submit normally
+    */}
     event.preventDefault();
     console.log(surveyFormData)
     console.log("Form Submitted");
@@ -51,12 +60,20 @@ function Survey() {
     }
   }
 
+  const handleEdit = (id) => {
+    console.log("clicked: " + id)
+
+    const answerToEdit = answersList.find((answer) => answer.id === id)
+
+    setSurveyFormData(answerToEdit)
+  }
+
   return (
     <main className="survey">
       <section className={`survey__list ${open ? "open" : ""}`}>
         <h2>Answers list</h2>
         {/* answers should go here */}
-        <AnswersList answersList={answersList}/>
+        <AnswersList answersList={answersList} handleEdit={(id) => handleEdit(id)}/>
       </section>
 
       <section className="survey__form">

@@ -23,7 +23,7 @@ function ItemsList({ list }) {
 export default function AnswersItem({
   // Feel free to change this props names to what suits you best
   // Rememeber here we're destructuring answerItem, which is the prop name that we've passed
-  answerItem: { id, name, radioButton, checkBox, textBox }
+  answerItem: { id, name, radioButton, checkBox, textBox }, handleEdit
 }) {
   return (
     <li key={id}>
@@ -43,14 +43,14 @@ export default function AnswersItem({
         </p>
         {/* 
           TODO: 
-                IMPLEMENT onClick. 
-                Send ID to Survey.jsx ?
-                Update surveyFormData-state based on id
+                IMPLEMENT onClick. DONE
+                Send ID to Survey.jsx ? DONE
+                Update surveyFormData-state based on id DONE
                 When user submits, check if id already exists in answersList?
                 If it does update that specific answer
                 If not just submit normally
         */}
-        <button className="form__submit" onClick={() => console.log("clicked")}>EDIT</button>
+        <button className="form__submit" onClick={() => handleEdit(id)}>EDIT</button>
       </article>
     </li>
   );
