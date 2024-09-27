@@ -29,27 +29,22 @@ export default function AnswersItem({
     <li key={id}>
       <article className="answer">
         <h3>{name || "Anon"} said:</h3>
+
         <p>
           <em>How do you rate your rubber duck colour?</em>
           <span className="answer__line">{radioButton}</span>
         </p>
+
         <p>
           <em>How do you like to spend time with your rubber duck?</em>
           <ItemsList list={checkBox} />
         </p>
+
         <p>
           <em>What else have you got to say about your rubber duck?</em>
           <span className="answer__line">{textBox}</span>
         </p>
-        {/* 
-          TODO: 
-                IMPLEMENT onClick. DONE
-                Send ID to Survey.jsx ? DONE
-                Update surveyFormData-state based on id DONE
-                When user submits, check if id already exists in answersList?
-                If it does update that specific answer
-                If not just submit normally
-        */}
+        
         <button className="form__submit" onClick={() => handleEdit(id)}>EDIT</button>
       </article>
     </li>

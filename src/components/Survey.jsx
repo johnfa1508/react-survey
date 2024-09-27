@@ -17,22 +17,19 @@ function Survey() {
   const [answersList, setAnswersList] = useState([]);
 
   const handleSubmit = (event) => {
-    {/* 
-      TODO: 
-            IMPLEMENT onClick. DONE
-            Send ID to Survey.jsx ? DONE
-            Update surveyFormData-state based on id DONE
-            When user submits, check if id already exists in answersList?
-            If it does update that specific answer
-            If not just submit normally
-    */}
-    event.preventDefault();
-    console.log(surveyFormData)
-    console.log("Form Submitted");
-    const newAnswer = {...surveyFormData, id: answersList.length + 1}
-    setAnswersList((prevList) => [...prevList, newAnswer]);
-    console.log(answersList)
+    event.preventDefault()
 
+    if (surveyFormData.id) {
+      setAnswersList((prevList) =>
+        prevList.map((item) =>
+          item.id === surveyFormData.id ? surveyFormData : item
+        )
+      )
+    } else {
+      const newAnswer = { ...surveyFormData, id: answersList.length + 1 }
+      setAnswersList((prevList) => [...prevList, newAnswer])
+    }
+    
     setSurveyFormData({
       id: null,
       radioButton: "",
@@ -50,19 +47,17 @@ function Survey() {
       setSurveyFormData((prevState) => {
         const updatedCheckBox = checked
           ? [...prevState.checkBox, value]
-          : prevState.checkBox.filter((item) => item !== value);
-        return { ...prevState, checkBox: updatedCheckBox };
+          : prevState.checkBox.filter((item) => item !== value)
+        return { ...prevState, checkBox: updatedCheckBox }
       });
     } else if (type === "radio") {
-      setSurveyFormData({ ...surveyFormData, radioButton: value });
+      setSurveyFormData({ ...surveyFormData, radioButton: value })
     } else {
-      setSurveyFormData({ ...surveyFormData, [name]: value });
+      setSurveyFormData({ ...surveyFormData, [name]: value })
     }
   }
 
   const handleEdit = (id) => {
-    console.log("clicked: " + id)
-
     const answerToEdit = answersList.find((answer) => answer.id === id)
 
     setSurveyFormData(answerToEdit)
